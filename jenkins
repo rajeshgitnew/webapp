@@ -1,0 +1,24 @@
+def MyName = "Rajesh"
+
+pipeline {
+agent any 
+stages {
+stage ("print variable") {
+steps { 
+echo "My Name is ${MyName}"
+    }
+   }
+stage ("compile") {
+steps {
+//git url: 'https://github.com/rajeshgitnew/java.git', branch: 'master'
+sh "mvn -DskipTests clean  install"
+   }
+ }
+  stage('Docker Build') {
+      agent any
+      steps {
+        sh 'docker build -t javasamplecode:latest .'
+        }
+        }
+    }
+ }   
