@@ -20,7 +20,7 @@ sh "mvn -DskipTests clean  install"
         sh 'sudo docker build -t javasamplecode:latest -f /var/lib/jenkins/workspace/Jenkins_Pipeline@2/dockerfile .'
         sh "sudo docker stop javasamplecode"
         sh " sudo docker rm javasamplecode"
-        sh "sudo docker run -d javasamplecode -p 80:80 --name javasamplecode"
+        sh "sudo docker run -d javasamplecode -P 80:80 --name javasamplecode"
         }
         }
     }
