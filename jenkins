@@ -18,7 +18,8 @@ sh "mvn -DskipTests clean  install"
       agent any
       steps {
         sh 'sudo docker build -t javasamplecode:latest -f /var/lib/jenkins/workspace/Jenkins_Pipeline@2/dockerfile .'
-        sh "sudo docker run -p 5000:5000 --name javasamplecode:latest -d java"
+        sh " sudo docker rm javasamplecode
+        sh "sudo docker run -p 5000:5000 --name javasamplecode  -d java"
         }
         }
     }
