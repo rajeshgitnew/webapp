@@ -17,7 +17,7 @@ sh "mvn -DskipTests clean  install"
   stage('Docker Build') {
       agent any
       steps {
-        sh 'docker build -t javasamplecode:latest -f /var/lib/jenkins/workspace/Jenkins_Pipeline@2/dockerfile .'
+        sh 'sudo docker build -t javasamplecode:latest -f /var/lib/jenkins/workspace/Jenkins_Pipeline@2/dockerfile .'
         }
         }
     }
