@@ -47,7 +47,7 @@ sh "mvn -DskipTests clean  install"
       try{
        sh 'sudo ssh root@10.1.0.8  kubectl apply -f /home/aisadmin/deployment.yaml'
       }catch(error){
-             sh 'sudo ssh root@10.1.0.8  kubectl apply -f /home/aisadmin/deployment.yaml'
+             sh 'sudo ssh root@10.1.0.8  kubectl create -f /home/aisadmin/deployment.yaml'
        }
       }
      }
