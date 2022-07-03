@@ -46,7 +46,7 @@ sh "mvn -DskipTests clean  install"
      sh 'scp -r -o StrictHostKeyChecking=no /root/node-deployment.yaml root@10.1.0.8:/'
      script{
       try{
-       sh 'ssh root@10.1.0.8 kubectl apply -f /root/deployment.yaml
+       sh 'ssh root@10.1.0.8 kubectl apply -f /root/deployment.yaml'
        }
       }
      }
