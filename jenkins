@@ -18,10 +18,17 @@ sh "mvn -DskipTests clean  install"
       agent any
       steps {
         sh 'sudo docker build -t javasamplecode:latest -f /var/lib/jenkins/workspace/Jenkins_Pipeline@2/dockerfile .'
+        sh 'sudo docker tag javasamplecode rajeshredhat89/javasamplecode:latest
+        sh 'sudo docker tag javasamplecode rajeshredhat89/javasamplecode:$BUILD_NUMBER'
         //sh "sudo docker stop javasamplecode"
         //sh " sudo docker rm javasamplecode"
-        sh "docker run -d --network host -p 5000:5000 --name javasamplecode javasamplecode"
+        //sh "docker run -d --network host -p 5000:5000 --name javasamplecode javasamplecode"
         }
         }
+        Stage ('Push Image to Docker Hub')
+        steps{
+        withDockerRegistry([ credentialsId: "rajeshredhat89", url: "" ]) {
+        sh 'sudo docker push  rajeshredhat89/javasamplecode:latest'
+        sh 'sudo docker push rajeshredhat89/javasamplecode:$BUILD_NUMBER'
     }
  }   
