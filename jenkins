@@ -48,6 +48,8 @@ sh "mvn -DskipTests clean  install"
       try{
        sh 'ssh root@10.1.0.8 kubectl apply -f /root/deployment.yaml'
        }catch(error)
+       {
+       }
       }
      }
     } 
