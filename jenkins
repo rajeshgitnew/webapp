@@ -38,6 +38,18 @@ sh "mvn -DskipTests clean  install"
 	sh 'sudo docker push rajeshredhat89/javasamplecode:$BUILD_NUMBER'                 
 	echo 'Push Image Completed'       
       }           
-    } 
     }
+    stage('Deploy image in kubernetes')
+    steps{
+        sshagent(['kubernetes-master.test.com'])
+	    {
+     sh 'scp -r -o StrictHostKeyChecking=no /root/node-deployment.yaml root@10.1.0.8:/'
+     script{
+      try{
+       sh 'ssh root@10.1.0.8 kubectl apply -f /root/deployment.yaml
+       }
+      }
+     }
+    } 
+   }
  }   
