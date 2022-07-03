@@ -1,5 +1,7 @@
 def MyName = "Rajesh"
-
+registry = "rajeshredhat89/javasampletest"
+registryCredential = 'rajeshredhat89'
+dockerImage = ''
 pipeline {
 agent any 
 stages {
@@ -26,12 +28,13 @@ sh "mvn -DskipTests clean  install"
         }
        }
         stage ('Push Image to Docker Hub') {
-        steps {
-        withDockerRegistry([ credentialsId: "rajeshredhat89", url: "" ]) {
-        sh 'sudo docker push  rajeshredhat89/javasamplecode:latest'
-        sh 'sudo docker push rajeshredhat89/javasamplecode:$BUILD_NUMBER'
+        steps{
+        script {
+        docker.withRegistry( '', registryCredential ) {
+        dockerImage.push()
         }
        }
-      } 
+      }
+     } 
     }
  }   
