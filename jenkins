@@ -25,7 +25,7 @@ sh "mvn -DskipTests clean  install"
         //sh "docker run -d --network host -p 5000:5000 --name javasamplecode javasamplecode"
         }
        }
-        Stage ('Push Image to Docker Hub') {
+        stage ('Push Image to Docker Hub') {
         steps {
         withDockerRegistry([ credentialsId: "rajeshredhat89", url: "" ]) {
         sh 'sudo docker push  rajeshredhat89/javasamplecode:latest'
