@@ -42,10 +42,10 @@ sh "mvn -DskipTests clean  install"
     stage('Deploy image in kubernetes'){
     steps{
        sshagent(['kubernetes']) {
-     sh 'sudo scp -r -o StrictHostKeyChecking=no /root/deployment.yaml root@10.1.0.8 -p Welcome123456789:/'
+     sh 'sudo scp -r -o StrictHostKeyChecking=no /root/deployment.yaml root@10.1.0.8  :/'
     script{
       try{
-       sh 'sudo ssh root@10.1.0.8 -p Welocme123456789kubectl apply -f /deployment.yaml'
+       sh 'sudo ssh root@10.1.0.8  kubectl apply -f /deployment.yaml'
       }catch(error)
        {
        }
