@@ -35,7 +35,7 @@ sh "mvn -DskipTests clean  install"
     }               
     stage('Push Image to Docker Hub') {         
       steps{                            
-	sh 'sudo docker push dockerhubusername/dockerhubreponame:$BUILD_NUMBER'                 
+	sh 'sudo docker push rajeshredhat89/javasamplecode:$BUILD_NUMBER'                 
 	echo 'Push Image Completed'       
       }           
     } 
