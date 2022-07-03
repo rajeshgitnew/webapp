@@ -39,7 +39,7 @@ sh "mvn -DskipTests clean  install"
 	echo 'Push Image Completed'       
       }           
     }
-    stage('Deploy image in kubernetes')
+    stage('Deploy image in kubernetes'){
     steps{
         sshagent(['kubernetes-master.test.com'])
 	    {
@@ -52,6 +52,7 @@ sh "mvn -DskipTests clean  install"
        }
       }
      }
-    } 
+    }
+   }
    }
  }   
