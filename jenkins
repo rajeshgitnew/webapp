@@ -26,7 +26,7 @@ sh "mvn -DskipTests clean  install"
         }
        }
         Stage ('Push Image to Docker Hub') {
-        steps{
+        steps {
         withDockerRegistry([ credentialsId: "rajeshredhat89", url: "" ]) {
         sh 'sudo docker push  rajeshredhat89/javasamplecode:latest'
         sh 'sudo docker push rajeshredhat89/javasamplecode:$BUILD_NUMBER'
