@@ -42,7 +42,6 @@ sh "mvn -DskipTests clean  install"
     stage('Deploy image in kubernetes'){
     steps{
        sshagent(['kubernetes']) {
-         {
      sh 'scp -r -o StrictHostKeyChecking=no /root/deployment.yaml root@10.1.0.8:/'
     script{
       try{
@@ -55,5 +54,4 @@ sh "mvn -DskipTests clean  install"
     }
    }
   }
- }
 }   
